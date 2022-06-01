@@ -1,0 +1,17 @@
+LED BIT P2.0 ；把单片机P2.0位定义为LED变量
+MAIN：
+CLR LED ；把LED设为0，就是把P2.0位设置为0。那么P2.0输出的就是低电位，这个LED灯是低电平有效，所以就是代表LED灯亮
+ACALL DELAY1000 ；调用一个延时函数，即LED亮的时间
+SETB LED；延时到了之后把LED设为1.即P2.0设置为高电平输出，LED灯不亮
+ACALL DELAY1000；再次调用延时函数
+AJMP MAIN；跳转到MAIN，就是重新执行LED灯亮，一直循环下去
+
+
+；下面是延时函数，主要是设置一个循环次数，让他执行NOP空语句
+DELAY1000: 
+    MOV R7,#229
+DELAY1000_A:
+    NOP
+    NOP
+    DJNZ   R7,DELAY1000_A
+RET

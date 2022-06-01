@@ -1,0 +1,170 @@
+A51 MACRO ASSEMBLER  HW                                                                   06/13/2021 11:58:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\hw.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE hw.a51 SET(SMALL) DEBUG PRINT(.\Listings\hw.lst) OBJECT(.\Objects\hw.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ?PR?HONGWAI SEGMENT CODE; //  ??????????
+                       2     PUBLIC HONGWAI;     //????
+----                   3     RSEG ?PR?HONGWAI; 
+                       4             
+0000                   5     HONGWAI:
+0000 30B203            6         JNB    P3.2,IR        ;Ò£¿ØÉ¨Ãè
+0003 020000   F        7         LJMP   HONGWAI          ;ÔÚÕ³£ÎÞÒ£¿ØÐÅºÅÊ±£¬Ò»Ìå»¯ºìÍâ½ÓÊÕÍ·Êä³öÊÇ¸ßµçÆ½£¬³ÌÐòÒ»Ö±ÔÚÑ­»
+                             ·¡£
+                       8      
+                       9     ;=================================================
+                      10     ;   ½âÂë³ÌÐò
+0006                  11     IR: 
+                      12         ;ÒÔÏÂ¶ÔÒ£¿ØÐÅºÅµÄ9000Î¢ÃëµÄ³õÊ¼µÍµçÆ½ÐÅºÅµÄÊ¶±ð
+0006 7C0A             13         MOV    R4,#10
+0008                  14     IR_SB:
+0008 1100     F       15         ACALL  DELAY882        ;µ÷ÓÃ882Î¢ÃëÑÓÊ±×Ó³ÌÐò
+000A 20B22B           16         JB     P3.2,IR_ERROR   ;ÑÓÊ±882Î¢ÃëºóÅÐ¶ÏP2.2½ÅÊÇ·ñ³öÏÖ¸ßµçÆ½Èç¹ûÓÐ¾ÍÍË³ö½âÂë³ÌÐò
+000D DCF9             17         DJNZ   R4,IR_SB        ;ÖØ¸´10´Î£¬Ä¿µÄÊÇ¼ì²âÔÚ8820Î¢ÃëÄÚÈç¹û³öÏÖ¸ßµçÆ½¾ÍÍË³ö½âÂë³ÌÐò
+                      18      
+                      19         ;Ê¶±ðÁ¬·¢Âë£¬ºÍÌø¹4.5maµÄ¸ßµçÆ½¡£
+000F 30B2FD           20         JNB     P3.2, $         ;µÈ´¸ßµçÆ½±Ü¿ª9ºÁÃëµÍµçÆ½Òµ¼Âö³å
+0012 1100     F       21         ACALL  DELAY2400
+0014 30B21F           22         JNB     P3.2,IR_Rp    ;ÕâÀïÎªµÍµçÆ½£¬ÈÏÎªÊÇÁ¬·¢ÂëÐÅºÅ£¬¼ûÍ¼£¶¡£
+0017 1100     F       23         ACALL  DELAY2400      ;ÑÓÊ±4.74ºÁÃë±Ü¿ª4.5ºÁÃëµÄ½á¹ûÂë
+                      24      
+                      25         ;ÒÔÏÂ32Ê¾ÝÂëµÄ¶ÁÈ¡¡¡£¬£°ºÍ£±µÄÊ¶±ð¡¡Çë¿´Í¼£²
+0019 791A             26         MOV     R1,#1AH        ;Éè¶¨1AHÎªÆðÊ¼RAMÇø
+001B 7A04             27         MOV     R2,#4 
+001D                  28     IR_4BYTE: 
+001D 7B08             29         MOV     R3,#8
+001F                  30     IR_8BIT:   
+001F 30B2FD           31         JNB     P3.2,$         ;µÈ´µØÖ·ÂëµÚÒ»Î»µÄ¸ßµçÆ½ÐÅºÅ
+0022 120000   F       32         LCALL  DELAY882        ;¸ßµçÆ½¿ªÊ¼ºóÓÃ882Î¢ÃëµÄÊ±¼ä³ßÈ¥ÅÐ¶ÏÐÅºÅ´ËÊ±µÄ¸ßµÍµçÆ½×´Ì¬
+0025 A2B2             33         MOV    C,P3.2          ;½«P2.2Ò½Å´ËÊ±µÄµçÆ½×´Ì¬0»ò1´æÈëCÖÐ
+0027 5003             34         JNC     IR_8BIT_0      ;Èç¹ûÎª0¾ÍÌø×ªµ½IR_8BIT_0
+0029 120000   F       35         LCALL  DELAY1000
+002C                  36     IR_8BIT_0: 
+002C E7               37         MOV    A,@R1           ;½«R1ÖÐµØÖ·µÄ¸øA
+002D 13               38         RRC    A               ;½«CÖÐµÄÖµ0»ò1ÒÆÈëAÖÐµÄ×îµÍÎ»
+002E F7               39         MOV    @R1,A           ;½«AÖÐµÄÊÔÝÊ±´æ·ÅÔÚR1ÖÐ
+002F DBEE             40         DJNZ   R3,IR_8BIT      ;½ÓÊÕµØÖ·ÂëµÄ¸ß8Î»
+0031 09               41         INC    R1              ;¶ÔR1ÖÐµÄÖµ¼Ó1£¬»»ÏÂÒ»¸öRAM
+0032 DAE9             42         DJNZ   R2,IR_4BYTE     ;½ÓÊÕÍê16Î»µØÖ·ÂëºÍ8Î»Ê¾ÝÂëºÍ8Î»Ê¾Ý£¬
+                      43                                ;´æ·ÅÔÚ1AH/1BH/1CH/1DHµÄRAMÖÐ
+                      44          ;½âÂë³É¹¦
+0034 8005             45         JMP    IR_GOTO
+                      46      
+0036                  47     IR_Rp:
+                      48         ;ÕâÀïÎªÖØ¸´ÂëÖ´ÐÐ´¦
+                      49         ;°´×¡Ò£¿Ø°´¼üÊ±£¬Ã¿¹108ms¾Íµ½ÕâÀïÀ´
+0036 8003             50         JMP    IR_GOTO
+                      51      
+0038                  52     IR_ERROR:
+                      53         ;´íÓïÍË³ö
+0038 020000   F       54         LJMP   HONGWAI ;ÍË³ö½âÂë×Ó³ÌÐò
+                      55      
+                      56     ;=================================================
+A51 MACRO ASSEMBLER  HW                                                                   06/13/2021 11:58:32 PAGE     2
+
+                      57     ;Ò£¿ØÖ´ÐÐ²¿·Ý
+003B                  58     IR_GOTO:
+                      59         ;ÕâÀï»¹ÒªÅÐ¶Ï1AHºÍ1BH¡¡Á½¸öÏµÍ³Âë»òÓÃ»§Âë£¬ÓÃÓÚÊ¶±ð²»Í¬µÄÒ£¿ØÆ÷
+                      60         ;MOV   A,1AH
+                      61         ;CJNE  A,#xxH,IR_ERROR   ;ÓÃ»§Âë£±²»¶ÔÔòÍË³ö
+                      62         ;MOV   A,1BH
+                      63         ;CJNE  A,#xxH,IR_ERROR   ;ÓÃ»§Âë£²²»¶ÔÔòÍË³ö
+                      64      
+                      65      
+                      66      
+                      67         ;ÅÐ¶ÏÁ½¸öÊ¾ÝÂëÊÇ·ñÏà·´
+003B E51C             68         MOV    A,1CH
+003D F4               69         CPL    A
+003E B51DF7           70         CJNE   A,1DH,IR_ERROR    ;Á½¸öÊ¾ÝÂë²»Ïà·´ÔòÍË³ö
+                      71         ;Ò£¿ØÖ´ÐÐ²¿·Ý
+                      72         ;MOV   A,1DH             ;ÅÐ¶Ï¶ÔÓ¦°´¼ü
+                      73         ;CJNE  A,#xxH,$+6
+                      74         ;LJMP  -¨¤Ìøµ½¶ÔÓ¦°´¼üÖ´ÐÐ´¦
+                      75         ;CJNE  A,#xxH,$+6
+                      76         ;LJMP  -¨¤Ìøµ½¶ÔÓ¦°´¼üÖ´ÐÐ´¦
+                      77         ;.
+0041 851DA0           78         MOV     P2,1DH         ;½«°´¼üµÄ¼üÖµÍ¨¹P1¿ÚµÄ8¸öLEDÏÔÊ¾³öÀ´!
+                      79     
+                      80      
+                      81         ;Çå³Ò£¿ØÖµÊ¹Á¬°´Ê§Ð§
+0044 751A00           82         MOV    1AH,#00H
+0047 751B00           83         MOV    1BH,#00H
+004A 751C00           84         MOV    1CH,#00H
+004D 751D00           85         MOV    1DH,#00H 
+0050 22               86         RET
+                      87             
+                      88     ;=================================================
+                      89     ; ÑÓÊ±×Ó³ÌÐò
+                      90     ;=============================882
+                      91     ;1.085x ((202x4)+5)=882
+0051                  92     DELAY882:   
+0051 7FCA             93         MOV R7,#202
+0053                  94     DELAY882_A:
+0053 00               95         NOP
+0054 00               96         NOP
+0055 DFFC             97         DJNZ   R7,DELAY882_A
+0057 22               98     RET
+                      99      
+                     100     ;=============================1000
+                     101     ;1.085x ((229x4)+5)=999.285
+0058                 102     DELAY1000: 
+0058 7FE5            103         MOV R7,#229
+005A                 104     DELAY1000_A:
+005A 00              105         NOP
+005B 00              106         NOP
+005C DFFC            107         DJNZ   R7,DELAY1000_A
+005E 22              108     RET
+                     109     ;=============================2400
+                     110     ;1.085x ((245x9)+5)=2397.85
+005F                 111     DELAY2400:   
+005F 7FF5            112         MOV R7,#245
+0061                 113     DELAY2400_A:
+0061 00              114         NOP
+0062 00              115         NOP
+0063 00              116         NOP
+0064 00              117         NOP
+0065 00              118         NOP
+0066 00              119         NOP
+0067 00              120         NOP
+0068 DFF7            121         DJNZ R7,DELAY2400_A
+006A 22              122     RET
+A51 MACRO ASSEMBLER  HW                                                                   06/13/2021 11:58:32 PAGE     3
+
+                     123     END
+A51 MACRO ASSEMBLER  HW                                                                   06/13/2021 11:58:32 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+?PR?HONGWAI. . . .  C SEG    006BH       REL=UNIT
+DELAY1000. . . . .  C ADDR   0058H   R   SEG=?PR?HONGWAI
+DELAY1000_A. . . .  C ADDR   005AH   R   SEG=?PR?HONGWAI
+DELAY2400. . . . .  C ADDR   005FH   R   SEG=?PR?HONGWAI
+DELAY2400_A. . . .  C ADDR   0061H   R   SEG=?PR?HONGWAI
+DELAY882 . . . . .  C ADDR   0051H   R   SEG=?PR?HONGWAI
+DELAY882_A . . . .  C ADDR   0053H   R   SEG=?PR?HONGWAI
+HONGWAI. . . . . .  C ADDR   0000H   R   SEG=?PR?HONGWAI
+IR . . . . . . . .  C ADDR   0006H   R   SEG=?PR?HONGWAI
+IR_4BYTE . . . . .  C ADDR   001DH   R   SEG=?PR?HONGWAI
+IR_8BIT. . . . . .  C ADDR   001FH   R   SEG=?PR?HONGWAI
+IR_8BIT_0. . . . .  C ADDR   002CH   R   SEG=?PR?HONGWAI
+IR_ERROR . . . . .  C ADDR   0038H   R   SEG=?PR?HONGWAI
+IR_GOTO. . . . . .  C ADDR   003BH   R   SEG=?PR?HONGWAI
+IR_RP. . . . . . .  C ADDR   0036H   R   SEG=?PR?HONGWAI
+IR_SB. . . . . . .  C ADDR   0008H   R   SEG=?PR?HONGWAI
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

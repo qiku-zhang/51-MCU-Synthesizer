@@ -1,0 +1,459 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 新建文件夹\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\新建文件夹;..\单片机
+                    -大作业;.\新建文件夹) DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <main.h>
+   2          #include <REG52.H>
+   3          
+   4          extern void LCD0();
+   5          
+   6          unsigned int C;
+   7          unsigned int song5_tune[11];
+   8          unsigned int song5_time[11];
+   9          void music();
+  10          void piano();
+  11          void record();
+  12          void delay(unsigned int s);
+  13          void LCD0();
+  14          void main(void)
+  15          {
+  16   1        while(1){
+  17   2        LED1=0;
+  18   2        LED2=0;
+  19   2        LED3=0;
+  20   2        LCD0();
+  21   2        while(key1==1&&key2==1&&key3==1)
+  22   2        {}
+  23   2        if(key1==0)
+  24   2        {
+  25   3          LED1=0;
+  26   3          LED2=1;
+  27   3          LED3=1;
+  28   3          LCD0();
+  29   3          delay(1000);
+  30   3          music();
+  31   3        }
+  32   2          
+  33   2        if(key2==0)
+  34   2        {
+  35   3          LED1=1;
+  36   3          LED2=0;
+  37   3          LED3=1;
+  38   3          LCD0();
+  39   3          delay(1000);
+  40   3          piano();
+  41   3        }
+  42   2          
+  43   2        if(key3==0)
+  44   2        {
+  45   3          LED1=1;
+  46   3          LED2=1;
+  47   3          LED3=0;
+  48   3          LCD0();
+  49   3          delay(1000);
+  50   3          record();
+  51   3        }
+  52   2       }
+  53   1      } 
+  54          
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 2   
+
+  55           
+  56          void music()
+  57          {
+  58   1        unsigned char i;
+  59   1        unsigned int s;
+  60   1        TMOD=0x01;
+  61   1        EA=1;
+  62   1        ET0=1;
+  63   1        while(1){
+  64   2        if(key1==0)
+  65   2        {
+  66   3          for(i=0;;i++)
+  67   3          {
+  68   4            C=song5_tune[i];
+  69   4            if(song5_time[i]==0)
+  70   4                break  ;
+  71   4            else
+  72   4              {
+  73   5                if(song5_tune[i]==0)
+  74   5                {s=100*song5_time[i];
+  75   6                    delay(s);}
+  76   5                else
+  77   5                  {
+  78   6                    TH0=tune[C]/256;
+  79   6                    TL0=tune[C]%256;
+  80   6                    TR0=1;
+  81   6                    s=100*song1_time[i];
+  82   6                    delay(s);
+  83   6                    TR0=0;        
+  84   6                  }
+  85   5              }
+  86   4          }
+  87   3          break;
+  88   3        }
+  89   2       if(key2==0)
+  90   2        {
+  91   3          for(i=0;;i++)
+  92   3          {
+  93   4            C=song2_tune[i];
+  94   4            if(song2_time[i]==0)
+  95   4                 break ;
+  96   4            else
+  97   4              {
+  98   5                if(song2_tune[i]==0)
+  99   5                {s=100*song2_time[i];
+ 100   6                    delay(s);}
+ 101   5                else
+ 102   5                  {
+ 103   6                    TH0=tune[C]/256;
+ 104   6                    TL0=tune[C]%256;
+ 105   6                    TR0=1;
+ 106   6                    s=100*song2_time[i];
+ 107   6                    delay(s);
+ 108   6                    TR0=0;        
+ 109   6                  }
+ 110   5              }
+ 111   4          }
+ 112   3          break;
+ 113   3        }
+ 114   2       if(key3==0)
+ 115   2        {
+ 116   3          for(i=0;;i++)
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 3   
+
+ 117   3          {
+ 118   4            C=song3_tune[i];
+ 119   4            if(song3_time[i]==0)
+ 120   4                 break ;
+ 121   4            else
+ 122   4              {
+ 123   5                if(song3_tune[i]==0)
+ 124   5                {s=100*song3_time[i];
+ 125   6                    delay(s);}
+ 126   5                else
+ 127   5                  {
+ 128   6                    TH0=tune[C]/256;
+ 129   6                    TL0=tune[C]%256;
+ 130   6                    TR0=1;
+ 131   6                    s=100*song3_time[i];
+ 132   6                    delay(s);
+ 133   6                    TR0=0;        
+ 134   6                  }
+ 135   5              }
+ 136   4          }
+ 137   3          break;
+ 138   3        }
+ 139   2       if(key4==0)
+ 140   2        {
+ 141   3          for(i=0;;i++)
+ 142   3          {
+ 143   4            C=song4_tune[i];
+ 144   4            if(song4_time[i]==0)
+ 145   4                 break ;
+ 146   4            else
+ 147   4              {
+ 148   5                if(song4_tune[i]==0)
+ 149   5                {s=100*song4_time[i];
+ 150   6                    delay(s);}
+ 151   5                else
+ 152   5                  {
+ 153   6                    TH0=tune[C]/256;
+ 154   6                    TL0=tune[C]%256;
+ 155   6                    TR0=1;
+ 156   6                    s=100*song4_time[i];
+ 157   6                    delay(s);
+ 158   6                    TR0=0;        
+ 159   6                  }
+ 160   5              }
+ 161   4          }
+ 162   3          break;
+ 163   3        }     
+ 164   2       }
+ 165   1      return;
+ 166   1      }
+ 167          
+ 168          void piano()
+ 169          {
+ 170   1        TMOD=0x01;
+ 171   1        EA=1;
+ 172   1        ET0=1;
+ 173   1        while(1)
+ 174   1        {
+ 175   2          if(key1==0)
+ 176   2          {
+ 177   3            delay(300);
+ 178   3            if(key2==0&&key3==1&&key4==1){
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 4   
+
+ 179   4              C=5;
+ 180   4              TH0=tune[C]/256;
+ 181   4              TL0=tune[C]%256;
+ 182   4              TR0=1;
+ 183   4              delay(100);
+ 184   4              TR0=0;}
+ 185   3            if(key2==1&&key3==0&&key4==1){
+ 186   4              C=6;
+ 187   4              TH0=tune[C]/256;
+ 188   4              TL0=tune[C]%256;
+ 189   4              TR0=1;
+ 190   4              delay(100);
+ 191   4              TR0=0;}
+ 192   3            if(key2==1&&key3==1&&key4==0){
+ 193   4              C=7;
+ 194   4              TH0=tune[C]/256;
+ 195   4              TL0=tune[C]%256;
+ 196   4              TR0=1;
+ 197   4              delay(100);
+ 198   4              TR0=0;}
+ 199   3            if(key2==1&&key3==1&&key4==1){
+ 200   4              C=1;
+ 201   4              TH0=tune[C]/256;
+ 202   4              TL0=tune[C]%256;
+ 203   4              TR0=1;
+ 204   4              delay(100);
+ 205   4              TR0=0;}     
+ 206   3          }
+ 207   2          
+ 208   2          if(key2==0)
+ 209   2          {
+ 210   3            delay(300);
+ 211   3            if(key1==0){
+ 212   4              C=5;
+ 213   4              TH0=tune[C]/256;
+ 214   4              TL0=tune[C]%256;
+ 215   4              TR0=1;
+ 216   4              delay(100);
+ 217   4              TR0=0;}
+ 218   3            else{
+ 219   4              C=2;
+ 220   4              TH0=tune[C]/256;
+ 221   4              TL0=tune[C]%256;
+ 222   4              TR0=1;
+ 223   4              delay(100);
+ 224   4              TR0=0;
+ 225   4            }
+ 226   3          }
+ 227   2          
+ 228   2          if(key3==0)
+ 229   2          {
+ 230   3            delay(300);
+ 231   3            if(key1==0){
+ 232   4              C=6;
+ 233   4              TH0=tune[C]/256;
+ 234   4              TL0=tune[C]%256;
+ 235   4              TR0=1;
+ 236   4              delay(100);
+ 237   4              TR0=0;}
+ 238   3            else{
+ 239   4              C=3;
+ 240   4              TH0=tune[C]/256;
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 5   
+
+ 241   4              TL0=tune[C]%256;
+ 242   4              TR0=1;
+ 243   4              delay(100);
+ 244   4              TR0=0;
+ 245   4            }
+ 246   3          }
+ 247   2          
+ 248   2          if(key4==0)
+ 249   2          {
+ 250   3            delay(300);
+ 251   3            if(key1==0){
+ 252   4              C=7;
+ 253   4              TH0=tune[C]/256;
+ 254   4              TL0=tune[C]%256;
+ 255   4              TR0=1;
+ 256   4              delay(100);
+ 257   4              TR0=0;}
+ 258   3            else{
+ 259   4              C=4;
+ 260   4              TH0=tune[C]/256;
+ 261   4              TL0=tune[C]%256;
+ 262   4              TR0=1;
+ 263   4              delay(100);
+ 264   4              TR0=0;
+ 265   4            }
+ 266   3          }
+ 267   2        }
+ 268   1        return;
+ 269   1      }
+ 270              
+ 271          
+ 272          void record()
+ 273          {
+ 274   1        int i=0;
+ 275   1        TMOD=0x01;
+ 276   1        EA=1;
+ 277   1        ET0=1;
+ 278   1        while(i<=9)
+ 279   1        {
+ 280   2          if(key1==0)
+ 281   2          {
+ 282   3            delay(300);
+ 283   3            if(key2==0&&key3==1&&key4==1){
+ 284   4              C=5;
+ 285   4              TH0=tune[C]/256;
+ 286   4              TL0=tune[C]%256;
+ 287   4              TR0=1;
+ 288   4              delay(100);
+ 289   4              TR0=0;
+ 290   4              song5_tune[i]=5;
+ 291   4              song5_time[i]=3;
+ 292   4              i++;}
+ 293   3            if(key2==1&&key3==0&&key4==1){
+ 294   4              C=6;
+ 295   4              TH0=tune[C]/256;
+ 296   4              TL0=tune[C]%256;
+ 297   4              TR0=1;
+ 298   4              delay(100);
+ 299   4              TR0=0;
+ 300   4              song5_tune[i]=6;
+ 301   4              song5_time[i]=3;
+ 302   4              i++;}
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 6   
+
+ 303   3            if(key2==1&&key3==1&&key4==0){
+ 304   4              C=7;
+ 305   4              TH0=tune[C]/256;
+ 306   4              TL0=tune[C]%256;
+ 307   4              TR0=1;
+ 308   4              delay(100);
+ 309   4              TR0=0;
+ 310   4              song5_tune[i]=7;
+ 311   4              song5_time[i]=3;
+ 312   4              i++;}
+ 313   3            if(key2==1&&key3==1&&key4==1){
+ 314   4              C=1;
+ 315   4              TH0=tune[C]/256;
+ 316   4              TL0=tune[C]%256;
+ 317   4              TR0=1;
+ 318   4              delay(100);
+ 319   4              TR0=0;
+ 320   4              song5_tune[i]=1;
+ 321   4              song5_time[i]=3;
+ 322   4              i++;}     
+ 323   3          }
+ 324   2          
+ 325   2          if(key2==0)
+ 326   2          {
+ 327   3            delay(300);
+ 328   3            if(key1==0){
+ 329   4              C=5;
+ 330   4              TH0=tune[C]/256;
+ 331   4              TL0=tune[C]%256;
+ 332   4              TR0=1;
+ 333   4              delay(100);
+ 334   4              TR0=0;
+ 335   4              song5_tune[i]=5;
+ 336   4              song5_time[i]=3;
+ 337   4              i++;}
+ 338   3            else{
+ 339   4              C=2;
+ 340   4              TH0=tune[C]/256;
+ 341   4              TL0=tune[C]%256;
+ 342   4              TR0=1;
+ 343   4              delay(100);
+ 344   4              TR0=0;
+ 345   4              song5_tune[i]=2;
+ 346   4              song5_time[i]=3;
+ 347   4              i++;
+ 348   4            }
+ 349   3          }
+ 350   2          
+ 351   2          if(key3==0)
+ 352   2          {
+ 353   3            delay(300);
+ 354   3            if(key1==0){
+ 355   4              C=6;
+ 356   4              TH0=tune[C]/256;
+ 357   4              TL0=tune[C]%256;
+ 358   4              TR0=1;
+ 359   4              delay(100);
+ 360   4              TR0=0;
+ 361   4              song5_tune[i]=6;
+ 362   4              song5_time[i]=3;
+ 363   4              i++;}
+ 364   3            else{
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 7   
+
+ 365   4              C=3;
+ 366   4              TH0=tune[C]/256;
+ 367   4              TL0=tune[C]%256;
+ 368   4              TR0=1;
+ 369   4              delay(100);
+ 370   4              TR0=0;
+ 371   4              song5_tune[i]=3;
+ 372   4              song5_time[i]=3;
+ 373   4              i++;
+ 374   4            }
+ 375   3          }
+ 376   2          
+ 377   2          if(key4==0)
+ 378   2          {
+ 379   3            delay(300);
+ 380   3            if(key1==0){
+ 381   4              C=7;
+ 382   4              TH0=tune[C]/256;
+ 383   4              TL0=tune[C]%256;
+ 384   4              TR0=1;
+ 385   4              delay(100);
+ 386   4              TR0=0;
+ 387   4              song5_tune[i]=7;
+ 388   4              song5_time[i]=3;
+ 389   4              i++;}
+ 390   3            else{
+ 391   4              C=4;
+ 392   4              TH0=tune[C]/256;
+ 393   4              TL0=tune[C]%256;
+ 394   4              TR0=1;
+ 395   4              delay(100);
+ 396   4              TR0=0;
+ 397   4              song5_tune[i]=4;
+ 398   4              song5_time[i]=3;
+ 399   4              i++;
+ 400   4            }
+ 401   3          }
+ 402   2        }
+ 403   1        song5_tune[10]=0;
+ 404   1        song5_time[10]=0;
+ 405   1        return;
+ 406   1      }
+ 407          
+ 408           void TIM0(void) interrupt 1 using 1
+ 409           {
+ 410   1        buzzer=~buzzer;
+ 411   1        TH0=tune[C]/256;
+ 412   1        TL0=tune[C]%256;
+ 413   1       }
+ 414           
+ 415           void delay(unsigned int s)
+ 416           {
+ 417   1         unsigned int i,j;
+ 418   1         for(i=0;i<s;i++)
+ 419   1         for(j=0;j<100;j++)
+ 420   1         ;
+ 421   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1572    ----
+   CONSTANT SIZE    =    504    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              06/18/2021 07:57:57 PAGE 8   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     46       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
