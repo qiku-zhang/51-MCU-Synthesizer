@@ -33,11 +33,19 @@ sfr SCON  = 0x98;
 sfr SBUF  = 0x99;
 
 /*  8052 Extensions  */
+<<<<<<< HEAD
 //sfr T2CON  = 0xC8;
 //sfr RCAP2L = 0xCA;
 //sfr RCAP2H = 0xCB;
 //sfr TL2    = 0xCC;
 //sfr TH2    = 0xCD;
+=======
+sfr T2CON  = 0xC8;
+sfr RCAP2L = 0xCA;
+sfr RCAP2H = 0xCB;
+sfr TL2    = 0xCC;
+sfr TH2    = 0xCD;
+>>>>>>> bff2cfa (红外遥控)
 
 
 /*  BIT Registers  */
@@ -98,8 +106,13 @@ sbit TI    = SCON^1;
 sbit RI    = SCON^0;
 
 /*  P1  */
+<<<<<<< HEAD
 sbit T2EX  = P1^1; // 8052 only
 sbit T2    = P1^0; // 8052 only
+=======
+//sbit T2EX  = P1^1; // 8052 only
+//sbit T2    = P1^0; // 8052 only
+>>>>>>> bff2cfa (红外遥控)
              
 /*  T2CON  */
 //sbit TF2    = T2CON^7;

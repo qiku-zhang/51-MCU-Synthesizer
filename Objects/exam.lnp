@@ -1,5 +1,9 @@
 ".\Objects\STARTUP.obj",
 ".\Objects\main.obj",
+<<<<<<< HEAD
+=======
+".\Objects\hw.obj",
+>>>>>>> bff2cfa (红外遥控)
 ".\Objects\LCD1.obj" 
 TO ".\Objects\exam" 
 PRINT(".\Listings\exam.m51") RAMSIZE(256) 

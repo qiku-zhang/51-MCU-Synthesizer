@@ -149,7 +149,11 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
+<<<<<<< HEAD
           <TargetSelection>-1</TargetSelection>
+=======
+          <TargetSelection>0</TargetSelection>
+>>>>>>> bff2cfa (红外遥控)
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -163,7 +167,11 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
+<<<<<<< HEAD
             <Driver>BIN\VDM51.DLL</Driver>
+=======
+            <Driver>BIN\MON51.DLL</Driver>
+>>>>>>> bff2cfa (红外遥控)
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -407,6 +415,14 @@
               <FilePath>.\新建文件夹\main.c</FilePath>
             </File>
             <File>
+<<<<<<< HEAD
+=======
+              <FileName>hw.a51</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\hw.a51</FilePath>
+            </File>
+            <File>
+>>>>>>> bff2cfa (红外遥控)
               <FileName>LCD1.a51</FileName>
               <FileType>2</FileType>
               <FilePath>.\LCD1.a51</FilePath>

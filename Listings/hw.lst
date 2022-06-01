@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 A51 MACRO ASSEMBLER  HW                                                                   06/13/2021 11:58:32 PAGE     1
+=======
+A51 MACRO ASSEMBLER  HW                                                                   06/22/2021 12:59:21 PAGE     1
+>>>>>>> bff2cfa (çº¢å¤–é¥æŽ§)
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -8,9 +12,15 @@ ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE hw.a51 SET(SMALL) DEBUG PRINT(.
 
 LOC  OBJ            LINE     SOURCE
 
+<<<<<<< HEAD
                        1     ?PR?HONGWAI SEGMENT CODE; //  ??????????
                        2     PUBLIC HONGWAI;     //????
 ----                   3     RSEG ?PR?HONGWAI; 
+=======
+                       1     ?PR?HONGWAI SEGMENT CODE
+                       2     PUBLIC HONGWAI;     
+----                   3     RSEG ?PR?HONGWAI; ÄÜ¹»ÈÃcÓïÑÔµ÷ÓÃ»ã±àº¯Ê
+>>>>>>> bff2cfa (çº¢å¤–é¥æŽ§)
                        4             
 0000                   5     HONGWAI:
 0000 30B203            6         JNB    P3.2,IR        ;Ò£¿ØÉ¨Ãè
@@ -32,6 +42,7 @@ LOC  OBJ            LINE     SOURCE
 0012 1100     F       21         ACALL  DELAY2400
 0014 30B21F           22         JNB     P3.2,IR_Rp    ;ÕâÀïÎªµÍµçÆ½£¬ÈÏÎªÊÇÁ¬·¢ÂëÐÅºÅ£¬¼ûÍ¼£¶¡£
 0017 1100     F       23         ACALL  DELAY2400      ;ÑÓÊ±4.74ºÁÃë±Ü¿ª4.5ºÁÃëµÄ½á¹ûÂë
+<<<<<<< HEAD
                       24      
                       25         ;ÒÔÏÂ32Ê¾ÝÂëµÄ¶ÁÈ¡¡¡£¬£°ºÍ£±µÄÊ¶±ð¡¡Çë¿´Í¼£²
 0019 791A             26         MOV     R1,#1AH        ;Éè¶¨1AHÎªÆðÊ¼RAMÇø
@@ -137,6 +148,114 @@ LOC  OBJ            LINE     SOURCE
 
                      123     END
 A51 MACRO ASSEMBLER  HW                                                                   06/13/2021 11:58:32 PAGE     4
+=======
+                      24             ;ÉÏÊöÊÇÊ¶±ðÊ¾ÝÇ°µÄÐÅºÅ
+                      25      
+                      26         ;ÒÔÏÂ32Ê¾ÝÂëµÄ¶ÁÈ¡¡¡£¬£°ºÍ£±µÄÊ¶±ð¡¡Çë¿´Í¼2
+0019 791A             27         MOV     R1,#1AH        ;Éè¶¨1AHÎªÆðÊ¼RAMÇø
+001B 7A04             28         MOV     R2,#4 
+001D                  29     IR_4BYTE: 
+001D 7B08             30         MOV     R3,#8
+001F                  31     IR_8BIT:   
+001F 30B2FD           32         JNB     P3.2,$         ;µÈ´µØÖ·ÂëµÚÒ»Î»µÄ¸ßµçÆ½ÐÅºÅ
+0022 120000   F       33         LCALL  DELAY882        ;¸ßµçÆ½¿ªÊ¼ºóÓÃ882Î¢ÃëµÄÊ±¼ä³ßÈ¥ÅÐ¶ÏÐÅºÅ´ËÊ±µÄ¸ßµÍµçÆ½×´Ì¬
+0025 A2B2             34         MOV    C,P3.2          ;½«P2.2Ò½Å´ËÊ±µÄµçÆ½×´Ì¬0»ò1´æÈëCÖÐ
+0027 5003             35         JNC     IR_8BIT_0      ;Èç¹ûÎª0¾ÍÌø×ªµ½IR_8BIT_0
+0029 120000   F       36         LCALL  DELAY1000
+002C                  37     IR_8BIT_0: 
+002C E7               38         MOV    A,@R1           ;½«R1ÖÐµØÖ·µÄ¸øA
+002D 13               39         RRC    A               ;½«CÖÐµÄÖµ0»ò1ÒÆÈëAÖÐµÄ×îµÍÎ»
+002E F7               40         MOV    @R1,A           ;½«AÖÐµÄÊÔÝÊ±´æ·ÅÔÚR1ÖÐ
+002F DBEE             41         DJNZ   R3,IR_8BIT      ;½ÓÊÕµØÖ·ÂëµÄ¸ß8Î»
+0031 09               42         INC    R1              ;¶ÔR1ÖÐµÄÖµ¼Ó1£¬»»ÏÂÒ»¸öRAM
+0032 DAE9             43         DJNZ   R2,IR_4BYTE     ;½ÓÊÕÍê16Î»µØÖ·ÂëºÍ8Î»Ê¾ÝÂëºÍ8Î»Ê¾Ý£¬
+                      44                                ;´æ·ÅÔÚ1AH/1BH/1CH/1DHµÄRAMÖÐ
+                      45          ;½âÂë³É¹¦
+0034 8005             46         JMP    IR_GOTO
+                      47      
+0036                  48     IR_Rp:
+                      49         ;ÕâÀïÎªÖØ¸´ÂëÖ´ÐÐ´¦
+                      50         ;°´×¡Ò£¿Ø°´¼üÊ±£¬Ã¿¹108ms¾Íµ½ÕâÀïÀ´
+0036 8003             51         JMP    IR_GOTO
+                      52      
+0038                  53     IR_ERROR:
+                      54         ;´íÓïÍË³ö
+0038 020000   F       55         LJMP   HONGWAI ;ÍË³ö½âÂë×Ó³ÌÐò
+                      56      
+A51 MACRO ASSEMBLER  HW                                                                   06/22/2021 12:59:21 PAGE     2
+
+                      57     ;=================================================
+                      58     ;Ò£¿ØÖ´ÐÐ²¿·Ý
+003B                  59     IR_GOTO:
+                      60         ;ÕâÀï»¹ÒªÅÐ¶Ï1AHºÍ1BH¡¡Á½¸öÏµÍ³Âë»òÓÃ»§Âë£¬ÓÃÓÚÊ¶±ð²»Í¬µÄÒ£¿ØÆ÷
+                      61         ;MOV   A,1AH
+                      62         ;CJNE  A,#xxH,IR_ERROR   ;ÓÃ»§Âë£±²»¶ÔÔòÍË³ö
+                      63         ;MOV   A,1BH
+                      64         ;CJNE  A,#xxH,IR_ERROR   ;ÓÃ»§Âë£²²»¶ÔÔòÍË³ö
+                      65      
+                      66      
+                      67      
+                      68         ;ÅÐ¶ÏÁ½¸öÊ¾ÝÂëÊÇ·ñÏà·´
+003B E51C             69         MOV    A,1CH
+003D F4               70         CPL    A
+003E B51DF7           71         CJNE   A,1DH,IR_ERROR    ;Á½¸öÊ¾ÝÂë²»Ïà·´ÔòÍË³ö
+                      72         ;Ò£¿ØÖ´ÐÐ²¿·Ý
+                      73         ;MOV   A,1DH             ;ÅÐ¶Ï¶ÔÓ¦°´¼ü
+                      74         ;CJNE  A,#xxH,$+6
+                      75         ;LJMP  -¨¤Ìøµ½¶ÔÓ¦°´¼üÖ´ÐÐ´¦
+                      76         ;CJNE  A,#xxH,$+6
+                      77         ;LJMP  -¨¤Ìøµ½¶ÔÓ¦°´¼üÖ´ÐÐ´¦
+                      78         ;.
+0041 851DA0           79         MOV     P2,1DH         ;½«°´¼üµÄ¼üÖµ´«µÝµ½p2¿Ú£¬·½±ãÖ÷º¯ÊÅÐ¶Ï
+                      80     
+                      81      
+                      82         ;Çå³Ò£¿ØÖµÊ¹Á¬°´Ê§Ð§
+0044 751A00           83         MOV    1AH,#00H
+0047 751B00           84         MOV    1BH,#00H
+004A 751C00           85         MOV    1CH,#00H
+004D 751D00           86         MOV    1DH,#00H 
+0050 22               87         RET
+                      88             
+                      89     ;=================================================
+                      90     ; ÑÓÊ±×Ó³ÌÐò
+                      91     ;=============================882
+                      92     ;1.085x ((202x4)+5)=882
+0051                  93     DELAY882:   
+0051 7FCA             94         MOV R7,#202
+0053                  95     DELAY882_A:
+0053 00               96         NOP
+0054 00               97         NOP
+0055 DFFC             98         DJNZ   R7,DELAY882_A
+0057 22               99     RET
+                     100      
+                     101     ;=============================1000
+                     102     ;1.085x ((229x4)+5)=999.285
+0058                 103     DELAY1000: 
+0058 7FE5            104         MOV R7,#229
+005A                 105     DELAY1000_A:
+005A 00              106         NOP
+005B 00              107         NOP
+005C DFFC            108         DJNZ   R7,DELAY1000_A
+005E 22              109     RET
+                     110     ;=============================2400
+                     111     ;1.085x ((245x9)+5)=2397.85
+005F                 112     DELAY2400:   
+005F 7FF5            113         MOV R7,#245
+0061                 114     DELAY2400_A:
+0061 00              115         NOP
+0062 00              116         NOP
+0063 00              117         NOP
+0064 00              118         NOP
+0065 00              119         NOP
+0066 00              120         NOP
+0067 00              121         NOP
+0068 DFF7            122         DJNZ R7,DELAY2400_A
+A51 MACRO ASSEMBLER  HW                                                                   06/22/2021 12:59:21 PAGE     3
+
+006A 22              123     RET
+                     124     END
+A51 MACRO ASSEMBLER  HW                                                                   06/22/2021 12:59:21 PAGE     4
+>>>>>>> bff2cfa (çº¢å¤–é¥æŽ§)
 
 SYMBOL TABLE LISTING
 ------ ----- -------

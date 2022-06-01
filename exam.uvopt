@@ -110,7 +110,11 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
+<<<<<<< HEAD
         <nTsel>-1</nTsel>
+=======
+        <nTsel>0</nTsel>
+>>>>>>> bff2cfa (红外遥控)
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -121,16 +125,23 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
+<<<<<<< HEAD
         <pMon>BIN\VDM51.DLL</pMon>
+=======
+        <pMon>BIN\MON51.DLL</pMon>
+>>>>>>> bff2cfa (红外遥控)
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+<<<<<<< HEAD
           <Key>VDM51</Key>
           <Name>-A127.0.0.1 -P8000 -O2</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
+=======
+>>>>>>> bff2cfa (红外遥控)
           <Key>DLGTP51</Key>
           <Name>(98=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=-1,-1,-1,-1,0)(84=-1,-1,-1,-1,0)(85=-1,-1,-1,-1,0)(3003=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
@@ -145,6 +156,7 @@
           <Name>(98=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=-1,-1,-1,-1,0)(84=-1,-1,-1,-1,0)(85=-1,-1,-1,-1,0)(3003=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
+<<<<<<< HEAD
       <Breakpoint>
         <Bp>
           <Number>0</Number>
@@ -163,6 +175,9 @@
           <Expression></Expression>
         </Bp>
       </Breakpoint>
+=======
+      <Breakpoint/>
+>>>>>>> bff2cfa (红外遥控)
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -192,7 +207,16 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
+<<<<<<< HEAD
           <ItemText>P1</ItemText>
+=======
+          <ItemText>P2</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>P3.2</ItemText>
+>>>>>>> bff2cfa (红外遥控)
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -317,6 +341,21 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
+<<<<<<< HEAD
+=======
+      <PathWithFileName>.\hw.a51</PathWithFileName>
+      <FilenameWithoutPath>hw.a51</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>6</FileNumber>
+      <FileType>2</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+>>>>>>> bff2cfa (红外遥控)
       <PathWithFileName>.\LCD1.a51</PathWithFileName>
       <FilenameWithoutPath>LCD1.a51</FilenameWithoutPath>
       <RteFlg>0</RteFlg>

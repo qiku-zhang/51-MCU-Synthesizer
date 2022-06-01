@@ -1,0 +1,120 @@
+A51 MACRO ASSEMBLER  LCD11                                                                06/15/2021 11:43:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LCD11.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LCD11.a51 SET(SMALL) DEBUG PRINT(.\Listings\LCD11.lst) OBJECT(.\Objects
+                      \LCD11.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ?PR?LCD1 SEGMENT CODE; //  ??????????
+                       2     PUBLIC LCD1;     //????
+----                   3     RSEG ?PR?LCD1; 
+                       4     
+0000                   5     LCD1:
+  00A6                 6     RS BIT P2.6;
+  00B6                 7     RW BIT P3.6;
+  00A7                 8     EN BIT P2.7;
+0000 C2A6              9     CLR RS
+0002 C2B6             10     CLR RW
+0004 C2A7             11     CLR EN
+0006 758038           12     MOV P0,#38H
+0009 120000   F       13     LCALL DELAY1000
+000C D2A7             14     SETB EN
+000E C2A7             15     CLR EN
+                      16     
+0010                  17     CLEAR:
+0010 C2A6             18     CLR RS
+0012 C2B6             19     CLR RW
+0014 C2A7             20     CLR EN
+0016 758001           21     MOV P0,#01H
+0019 120000   F       22     LCALL DELAY1000
+001C D2A7             23     SETB EN
+001E C2A7             24     CLR EN
+                      25     
+0020                  26     INIT:
+0020 C2A6             27     CLR RS
+0022 C2B6             28     CLR RW
+0024 C2A7             29     CLR EN
+0026 758006           30     MOV P0,#06H
+0029 120000   F       31     LCALL DELAY1000
+002C D2A7             32     SETB EN
+002E C2A7             33     CLR EN
+                      34     
+0030 C2A6             35     CLR RS
+0032 C2B6             36     CLR RW
+0034 C2A7             37     CLR EN
+0036 75800C           38     MOV P0,#0CH
+0039 120000   F       39     LCALL DELAY1000
+003C D2A7             40     SETB EN
+003E C2A7             41     CLR EN
+                      42     
+0040 C2A6             43     CLR RS
+0042 C2B6             44     CLR RW
+0044 C2A7             45     CLR EN
+0046 758080           46     MOV P0,#80H
+0049 120000   F       47     LCALL DELAY1000
+004C D2A7             48     SETB EN
+004E C2A7             49     CLR EN
+                      50     
+0050 7B07             51     MOV R3,#07H
+0052 7900             52     MOV R1,#00H
+0054                  53     LOOP:
+0054 D2A6             54     SETB RS
+0056 C2B6             55     CLR RW
+0058 C2A7             56     CLR EN
+005A E9               57     MOV A,R1
+A51 MACRO ASSEMBLER  LCD11                                                                06/15/2021 11:43:55 PAGE     2
+
+005B 900000   F       58     MOV DPTR,#TABLE1
+005E 93               59     MOVC A,@A+DPTR
+005F F580             60     MOV P0,A
+0061 120000   F       61     LCALL DELAY1000
+0064 D2A7             62     SETB EN
+0066 C2A7             63     CLR EN
+0068 09               64     INC R1
+0069 DBE9             65     DJNZ R3,LOOP
+006B 22               66     RET
+                      67     
+006C                  68     TABLE1:
+006C 313A4D55         69     DB 31H,3AH,4DH,55H,53H,49H,43H
+0070 534943                  
+                      70     
+0073                  71     DELAY1000: 
+0073 7FE5             72         MOV R7,#229
+0075                  73     DELAY1000_A:
+0075 00               74         NOP
+0076 00               75         NOP
+0077 DFFC             76         DJNZ   R7,DELAY1000_A
+0079 22               77     RET
+                      78             
+                      79     END
+A51 MACRO ASSEMBLER  LCD11                                                                06/15/2021 11:43:55 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+?PR?LCD1 . . . . .  C SEG    007AH       REL=UNIT
+CLEAR. . . . . . .  C ADDR   0010H   R   SEG=?PR?LCD1
+DELAY1000. . . . .  C ADDR   0073H   R   SEG=?PR?LCD1
+DELAY1000_A. . . .  C ADDR   0075H   R   SEG=?PR?LCD1
+EN . . . . . . . .  B ADDR   00A0H.7 A   
+INIT . . . . . . .  C ADDR   0020H   R   SEG=?PR?LCD1
+LCD1 . . . . . . .  C ADDR   0000H   R   SEG=?PR?LCD1
+LOOP . . . . . . .  C ADDR   0054H   R   SEG=?PR?LCD1
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RS . . . . . . . .  B ADDR   00A0H.6 A   
+RW . . . . . . . .  B ADDR   00B0H.6 A   
+TABLE1 . . . . . .  C ADDR   006CH   R   SEG=?PR?LCD1
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

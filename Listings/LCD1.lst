@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 A51 MACRO ASSEMBLER  LCD1                                                                 06/18/2021 07:57:58 PAGE     1
+=======
+A51 MACRO ASSEMBLER  LCD1                                                                 06/22/2021 12:59:21 PAGE     1
+>>>>>>> bff2cfa (Á∫¢Â§ñÈÅ•Êéß)
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -13,7 +17,11 @@ LOC  OBJ            LINE     SOURCE
 ----                   3     RSEG ?PR?LCD0; 
                        4     
 0000                   5     LCD0:
+<<<<<<< HEAD
 0000 AE90              6     MOV R6,P1
+=======
+0000 AEA0              6     MOV R6,P2
+>>>>>>> bff2cfa (Á∫¢Â§ñÈÅ•Êéß)
   00A6                 7     RS BIT P2.6;
   00B6                 8     RW BIT P3.6;
   00A7                 9     EN BIT P2.7;
@@ -24,6 +32,7 @@ LOC  OBJ            LINE     SOURCE
 000B 120000   F       14     LCALL DELAY1000
 000E D2A7             15     SETB EN
 0010 C2A7             16     CLR EN
+<<<<<<< HEAD
                       17     
 0012                  18     CLEAR:
 0012 C2A6             19     CLR RS
@@ -165,6 +174,174 @@ LOC  OBJ            LINE     SOURCE
                      145             
                      146     END
 A51 MACRO ASSEMBLER  LCD1                                                                 06/18/2021 07:57:58 PAGE     4
+=======
+                      17     ;…Ë÷√8Œª æ›¥´ ‰∫ÕÀ´–– ‰≥ˆ∑Ω Ω
+                      18     
+0012                  19     CLEAR:
+0012 C2A6             20     CLR RS
+0014 C2B6             21     CLR RW
+0016 C2A7             22     CLR EN
+0018 758001           23     MOV P0,#01H
+001B 120000   F       24     LCALL DELAY1000
+001E D2A7             25     SETB EN
+0020 C2A7             26     CLR EN
+                      27     ;«Â∆¡÷∏¡Ó
+                      28     
+0022                  29     INIT:
+0022 C2A6             30     CLR RS
+0024 C2B6             31     CLR RW
+0026 C2A7             32     CLR EN
+0028 758006           33     MOV P0,#06H
+002B 120000   F       34     LCALL DELAY1000
+002E D2A7             35     SETB EN
+0030 C2A7             36     CLR EN
+                      37     ;œÚ”““∆∂Ø
+                      38     
+0032 C2A6             39     CLR RS
+0034 C2B6             40     CLR RW
+0036 C2A7             41     CLR EN
+0038 75800C           42     MOV P0,#0CH
+003B 120000   F       43     LCALL DELAY1000
+003E D2A7             44     SETB EN
+0040 C2A7             45     CLR EN
+                      46     ;œ‘ æ£¨≤ª…¡À∏
+                      47     
+0042 C2A6             48     CLR RS
+0044 C2B6             49     CLR RW
+0046 C2A7             50     CLR EN
+0048 758080           51     MOV P0,#80H
+004B 120000   F       52     LCALL DELAY1000
+004E D2A7             53     SETB EN
+0050 C2A7             54     CLR EN
+                      55     ;…Ë÷√≥ı ºµÿ÷∑
+                      56     
+0052 EE               57     MOV A,R6
+A51 MACRO ASSEMBLER  LCD1                                                                 06/22/2021 12:59:21 PAGE     2
+
+0053 B4001C           58     CJNE A,#00H,DT1
+0056 7B0F             59     MOV R3,#0FH
+0058 7900             60     MOV R1,#00H
+005A                  61     LOOP1:
+005A D2A6             62     SETB RS
+005C C2B6             63     CLR RW
+005E C2A7             64     CLR EN
+0060 E9               65     MOV A,R1
+0061 900000   F       66     MOV DPTR,#TABLE1
+0064 93               67     MOVC A,@A+DPTR
+0065 F580             68     MOV P0,A
+0067 120000   F       69     LCALL DELAY1000
+006A D2A7             70     SETB EN
+006C C2A7             71     CLR EN
+006E 09               72     INC R1
+006F DBE9             73     DJNZ R3,LOOP1
+0071 22               74     RET
+                      75     
+0072                  76     DT1:
+0072 EE               77     MOV A,R6
+0073 B4E91C           78     CJNE A,#0E9H,DT2
+0076 7B0F             79     MOV R3,#0FH
+0078 7900             80     MOV R1,#00H
+007A                  81     LOOP2:
+007A D2A6             82     SETB RS
+007C C2B6             83     CLR RW
+007E C2A7             84     CLR EN
+0080 E9               85     MOV A,R1
+0081 900000   F       86     MOV DPTR,#TABLE1
+0084 93               87     MOVC A,@A+DPTR
+0085 F580             88     MOV P0,A
+0087 120000   F       89     LCALL DELAY1000
+008A D2A7             90     SETB EN
+008C C2A7             91     CLR EN
+008E 09               92     INC R1
+008F DBE9             93     DJNZ R3,LOOP2
+0091 22               94     RET
+                      95     
+0092                  96     DT2:
+0092 EE               97     MOV A,R6
+0093 B4F31C           98     CJNE A,#0F3H,DT3
+0096 7B07             99     MOV R3,#07H
+0098 7900            100     MOV R1,#00H
+009A                 101     LOOP3:
+009A D2A6            102     SETB RS
+009C C2B6            103     CLR RW
+009E C2A7            104     CLR EN
+00A0 E9              105     MOV A,R1
+00A1 900000   F      106     MOV DPTR,#TABLE2
+00A4 93              107     MOVC A,@A+DPTR
+00A5 F580            108     MOV P0,A
+00A7 120000   F      109     LCALL DELAY1000
+00AA D2A7            110     SETB EN
+00AC C2A7            111     CLR EN
+00AE 09              112     INC R1
+00AF DBE9            113     DJNZ R3,LOOP3
+00B1 22              114     RET
+                     115     
+00B2                 116     DT3:
+00B2 EE              117     MOV A,R6
+00B3 B4E71C          118     CJNE A,#0E7H,DT4
+00B6 7B07            119     MOV R3,#07H
+00B8 7900            120     MOV R1,#00H
+00BA                 121     LOOP4:
+00BA D2A6            122     SETB RS
+00BC C2B6            123     CLR RW
+A51 MACRO ASSEMBLER  LCD1                                                                 06/22/2021 12:59:21 PAGE     3
+
+00BE C2A7            124     CLR EN
+00C0 E9              125     MOV A,R1
+00C1 900000   F      126     MOV DPTR,#TABLE3
+00C4 93              127     MOVC A,@A+DPTR
+00C5 F580            128     MOV P0,A
+00C7 120000   F      129     LCALL DELAY1000
+00CA D2A7            130     SETB EN
+00CC C2A7            131     CLR EN
+00CE 09              132     INC R1
+00CF DBE9            133     DJNZ R3,LOOP4
+00D1 22              134     RET
+                     135     
+00D2                 136     DT4:
+00D2 7B08            137     MOV R3,#08H
+00D4 7900            138     MOV R1,#00H
+00D6                 139     LOOP5:
+00D6 D2A6            140     SETB RS
+00D8 C2B6            141     CLR RW
+00DA C2A7            142     CLR EN
+00DC E9              143     MOV A,R1
+00DD 900000   F      144     MOV DPTR,#TABLE4
+00E0 93              145     MOVC A,@A+DPTR
+00E1 F580            146     MOV P0,A
+00E3 120000   F      147     LCALL DELAY1000
+00E6 D2A7            148     SETB EN
+00E8 C2A7            149     CLR EN
+00EA 09              150     INC R1
+00EB DBE9            151     DJNZ R3,LOOP5
+00ED 22              152     RET
+                     153     
+00EE                 154     TABLE1:
+00EE 43484F4F        155     DB 43H,48H,4FH,4FH,53H,45H,20H,46H,55H,4EH,43H,54H,49H,4FH,4EH
+00F2 53452046                
+00F6 554E4354                
+00FA 494F4E                  
+00FD                 156     TABLE2:
+00FD 313A4D55        157     DB 31H,3AH,4DH,55H,53H,49H,43H
+0101 534943                  
+0104                 158     TABLE3:
+0104 323A5049        159     DB 32H,3AH,50H,49H,41H,4EH,4FH
+0108 414E4F                  
+010B                 160     TABLE4:
+010B 333A5245        161     DB 33H,3AH,52H,45H,43H,4FH,52H,44H
+010F 434F5244                
+                     162             
+0113                 163     DELAY1000: 
+0113 7FE5            164         MOV R7,#229
+0115                 165     DELAY1000_A:
+0115 00              166         NOP
+0116 00              167         NOP
+0117 DFFC            168         DJNZ   R7,DELAY1000_A
+0119 22              169     RET
+                     170             
+                     171     END
+A51 MACRO ASSEMBLER  LCD1                                                                 06/22/2021 12:59:21 PAGE     4
+>>>>>>> bff2cfa (Á∫¢Â§ñÈÅ•Êéß)
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -172,6 +349,7 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
+<<<<<<< HEAD
 ?PR?LCD0 . . . . .  C SEG    00FAH       REL=UNIT
 CLEAR. . . . . . .  C ADDR   0012H   R   SEG=?PR?LCD0
 DELAY1000. . . . .  C ADDR   00F3H   R   SEG=?PR?LCD0
@@ -179,23 +357,48 @@ DELAY1000_A. . . .  C ADDR   00F5H   R   SEG=?PR?LCD0
 DT2. . . . . . . .  C ADDR   0072H   R   SEG=?PR?LCD0
 DT3. . . . . . . .  C ADDR   0092H   R   SEG=?PR?LCD0
 DT4. . . . . . . .  C ADDR   00B2H   R   SEG=?PR?LCD0
+=======
+?PR?LCD0 . . . . .  C SEG    011AH       REL=UNIT
+CLEAR. . . . . . .  C ADDR   0012H   R   SEG=?PR?LCD0
+DELAY1000. . . . .  C ADDR   0113H   R   SEG=?PR?LCD0
+DELAY1000_A. . . .  C ADDR   0115H   R   SEG=?PR?LCD0
+DT1. . . . . . . .  C ADDR   0072H   R   SEG=?PR?LCD0
+DT2. . . . . . . .  C ADDR   0092H   R   SEG=?PR?LCD0
+DT3. . . . . . . .  C ADDR   00B2H   R   SEG=?PR?LCD0
+DT4. . . . . . . .  C ADDR   00D2H   R   SEG=?PR?LCD0
+>>>>>>> bff2cfa (Á∫¢Â§ñÈÅ•Êéß)
 EN . . . . . . . .  B ADDR   00A0H.7 A   
 INIT . . . . . . .  C ADDR   0022H   R   SEG=?PR?LCD0
 LCD0 . . . . . . .  C ADDR   0000H   R   SEG=?PR?LCD0
 LOOP1. . . . . . .  C ADDR   005AH   R   SEG=?PR?LCD0
+<<<<<<< HEAD
 LOOP3. . . . . . .  C ADDR   007AH   R   SEG=?PR?LCD0
 LOOP4. . . . . . .  C ADDR   009AH   R   SEG=?PR?LCD0
 LOOP5. . . . . . .  C ADDR   00B6H   R   SEG=?PR?LCD0
 P0 . . . . . . . .  D ADDR   0080H   A   
 P1 . . . . . . . .  D ADDR   0090H   A   
+=======
+LOOP2. . . . . . .  C ADDR   007AH   R   SEG=?PR?LCD0
+LOOP3. . . . . . .  C ADDR   009AH   R   SEG=?PR?LCD0
+LOOP4. . . . . . .  C ADDR   00BAH   R   SEG=?PR?LCD0
+LOOP5. . . . . . .  C ADDR   00D6H   R   SEG=?PR?LCD0
+P0 . . . . . . . .  D ADDR   0080H   A   
+>>>>>>> bff2cfa (Á∫¢Â§ñÈÅ•Êéß)
 P2 . . . . . . . .  D ADDR   00A0H   A   
 P3 . . . . . . . .  D ADDR   00B0H   A   
 RS . . . . . . . .  B ADDR   00A0H.6 A   
 RW . . . . . . . .  B ADDR   00B0H.6 A   
+<<<<<<< HEAD
 TABLE1 . . . . . .  C ADDR   00CEH   R   SEG=?PR?LCD0
 TABLE2 . . . . . .  C ADDR   00DDH   R   SEG=?PR?LCD0
 TABLE3 . . . . . .  C ADDR   00E4H   R   SEG=?PR?LCD0
 TABLE4 . . . . . .  C ADDR   00EBH   R   SEG=?PR?LCD0
+=======
+TABLE1 . . . . . .  C ADDR   00EEH   R   SEG=?PR?LCD0
+TABLE2 . . . . . .  C ADDR   00FDH   R   SEG=?PR?LCD0
+TABLE3 . . . . . .  C ADDR   0104H   R   SEG=?PR?LCD0
+TABLE4 . . . . . .  C ADDR   010BH   R   SEG=?PR?LCD0
+>>>>>>> bff2cfa (Á∫¢Â§ñÈÅ•Êéß)
 
 
 REGISTER BANK(S) USED: 0 

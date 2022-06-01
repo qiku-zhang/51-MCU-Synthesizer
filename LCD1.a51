@@ -3,7 +3,11 @@ PUBLIC LCD0;     //????
 RSEG ?PR?LCD0; 
 
 LCD0:
+<<<<<<< HEAD
 MOV R6,P1
+=======
+MOV R6,P2
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 RS BIT P2.6;
 RW BIT P3.6;
 EN BIT P2.7;
@@ -14,6 +18,10 @@ MOV P0,#38H
 LCALL DELAY1000
 SETB EN
 CLR EN
+<<<<<<< HEAD
+=======
+;设置8位数据传输和双行输出方式
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 
 CLEAR:
 CLR RS
@@ -23,6 +31,10 @@ MOV P0,#01H
 LCALL DELAY1000
 SETB EN
 CLR EN
+<<<<<<< HEAD
+=======
+;清屏指令
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 
 INIT:
 CLR RS
@@ -32,6 +44,10 @@ MOV P0,#06H
 LCALL DELAY1000
 SETB EN
 CLR EN
+<<<<<<< HEAD
+=======
+;向右移动
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 
 CLR RS
 CLR RW
@@ -40,6 +56,10 @@ MOV P0,#0CH
 LCALL DELAY1000
 SETB EN
 CLR EN
+<<<<<<< HEAD
+=======
+;显示，不闪烁
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 
 CLR RS
 CLR RW
@@ -48,9 +68,16 @@ MOV P0,#80H
 LCALL DELAY1000
 SETB EN
 CLR EN
+<<<<<<< HEAD
 
 MOV A,R6
 CJNE A,#0F8H,DT2
+=======
+;设置初始地址
+
+MOV A,R6
+CJNE A,#00H,DT1
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 MOV R3,#0FH
 MOV R1,#00H
 LOOP1:
@@ -68,9 +95,35 @@ INC R1
 DJNZ R3,LOOP1
 RET
 
+<<<<<<< HEAD
 DT2:
 MOV A,R6
 CJNE A,#0FEH,DT3
+=======
+DT1:
+MOV A,R6
+CJNE A,#0E9H,DT2
+MOV R3,#0FH
+MOV R1,#00H
+LOOP2:
+SETB RS
+CLR RW
+CLR EN
+MOV A,R1
+MOV DPTR,#TABLE1
+MOVC A,@A+DPTR
+MOV P0,A
+LCALL DELAY1000
+SETB EN
+CLR EN
+INC R1
+DJNZ R3,LOOP2
+RET
+
+DT2:
+MOV A,R6
+CJNE A,#0F3H,DT3
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 MOV R3,#07H
 MOV R1,#00H
 LOOP3:
@@ -90,7 +143,11 @@ RET
 
 DT3:
 MOV A,R6
+<<<<<<< HEAD
 CJNE A,#0FDH,DT4
+=======
+CJNE A,#0E7H,DT4
+>>>>>>> bff2cfa (绾㈠閬ユ帶)
 MOV R3,#07H
 MOV R1,#00H
 LOOP4:
